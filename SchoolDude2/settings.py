@@ -36,10 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sessions',
     'debug_toolbar',
+    'Accounts',
     'DistrictTag',
-    'TicketSystem', 
-    'django.contrib.sessions'
+    'Tickets',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +86,7 @@ WSGI_APPLICATION = 'SchoolDude2.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'SchoolDude2',
+        'NAME': 'schooldude2',
         'HOST': 'localhost',
         'USER': 'root',
         'PASSWORD': 'Gonzalez1259'
@@ -133,3 +134,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'Accounts.CustomUser'
