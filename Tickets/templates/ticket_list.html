@@ -1,0 +1,19 @@
+<!-- ticket_list.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if location %}
+        <h2>Tickets in {{ location }}</h2>
+    {% else %}
+        <h2>All Tickets</h2>
+    {% endif %}
+
+    <ul>
+        {% for ticket in tickets %}
+            <li>{{ ticket.title }} - {{ ticket.description }} - {{ ticket.location }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+

@@ -1,0 +1,20 @@
+<!-- create_ticket.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Create a New Ticket</h2>
+  
+  {% if request.user.is_authenticated %}
+    <p>User: {{ request.user.username }} ({{ request.user.email }})</p>
+  {% else %}
+    <p>User: Anonymous User</p>
+  {% endif %}
+
+  <form method="post" action="{% url 'create_ticket' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Ticket</button>
+  </form>
+{% endblock %}
+

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from Accounts.models import CustomUser
 
 class TicketStatus(models.TextChoices):
@@ -19,12 +20,11 @@ class PriorityChoices(models.TextChoices):
     
 class Ticket(models.Model):
     title = models.CharField(max_length=100)
-    tech_assigned = models.ForeignKey(CustomUser,on_delete=models.PROTECT,related_name = 'tech_assigned')
     status = models.CharField(max_length=25, choices=TicketStatus.choices, default=TicketStatus.TO_DO)
     description = models.TextField()
     created_at = models.DateTimeField('created at', auto_now_add=True)
     updated_at = models.DateTimeField('updated at', auto_now=True)
-    created_by = models.ForeignKey(CustomUser, on_delete = models.PROTECT, related_name = 'created_by')
+    created_by = models.ForeignKey(get_user_model(), on_delete=models.PROTECT, related_name='created_by')
     location = models.CharField(max_length=20, choices=CustomUser.LOCATIONS, null=True, blank=True)
     priority = models.CharField(max_length = 25, choices = PriorityChoices.choices, default = PriorityChoices.MEDIUM)
-    ticket_type = models.ForeignKey(TicketType, on_delete = models.PROTECT)
+    ticket_type = models.ForeignKey(TicketType, on_delete = models.PROTECT,blank = True)

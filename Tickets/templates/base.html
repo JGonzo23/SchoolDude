@@ -1,0 +1,26 @@
+<!-- base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock %}</title>
+    <!-- Add your CSS links, meta tags, or other head content here -->
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="{% url 'ticket_list' %}">Ticket List</a></li>
+        <li><a href="{% url 'create_ticket' %}">Create Ticket</a></li>
+        <!-- Add more navigation links as needed -->
+    </ul>
+</nav>
+
+<div>
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

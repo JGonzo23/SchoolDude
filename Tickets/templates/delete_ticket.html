@@ -1,0 +1,20 @@
+<!-- delete_tickets.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Delete Ticket</h2>
+  <p>Are you sure you want to delete the following ticket?</p>
+  <ul>
+    <li><strong>Title:</strong> {{ ticket.title }}</li>
+    <li><strong>Description:</strong> {{ ticket.description }}</li>
+    <li><strong>Location:</strong> {{ ticket.location }}</li>
+    <!-- Add other ticket details as needed -->
+  </ul>
+
+  <form method="post" action="{% url 'delete_ticket' ticket.id %}">
+    {% csrf_token %}
+    <button type="submit">Yes, delete it</button>
+    <a href="{% url 'ticket_list' %}">Cancel</a>
+  </form>
+{% endblock %}
